@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#000"
+            android:orientation="vertical"
+            android:stretchColumns="1">
+
+            <TableRow android:padding="1dip">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:layout_span="2"
+                    android:gravity="center_horizontal"
+                    android:text="Turn Configuration"
+                    android:textColor="#EB641E"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#444">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginLeft="10dp"
+                    android:text="Speed STEP1"
+                    android:textColor="#fff"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
+
+                <SeekBar
+                    android:id="@+id/speedStep1"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginLeft="10dp"
+                    android:background="#fff"
+                    android:hint="[range here]"
+                    android:padding="12dp"
+                    android:textColor="#000"
+                    android:textSize="36sp" />
+                <TextView
+                    android:id="@+id/textSpeed1"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="50"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="#bbb"
+                    android:textSize="36sp"
+                    android:layout_column="2"/>
+            </TableRow>
+
+            <TableRow android:background="#444">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginLeft="10dp"
+                    android:text="Angle STEP 1"
+                    android:textColor="#fff"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
+
+                <SeekBar
+                    android:id="@+id/angleStep1"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginLeft="10dp"
+                    android:background="#fff"
+                    android:hint="[range here]"
+                    android:padding="12dp"
+                    android:textSize="36sp" />
+                <TextView
+                    android:id="@+id/textAngle1"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="50"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="#bbb"
+                    android:textSize="36sp"
+                    android:layout_column="2"/>
+            </TableRow>
+
+            <TableRow android:background="#444">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginLeft="10dp"
+                    android:text="Speed STEP 2"
+                    android:textColor="#fff"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
+
+                <SeekBar
+                    android:id="@+id/speedStep2"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginLeft="10dp"
+                    android:background="#fff"
+                    android:hint="[range here]"
+                    android:padding="12dp"
+                    android:textColor="#000"
+                    android:textSize="36sp" />
+                <TextView
+                    android:id="@+id/textSpeed2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="50"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="#bbb"
+                    android:textSize="36sp"
+                    android:layout_column="2"/>
+            </TableRow>
+
+            <TableRow android:background="#444">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginLeft="10dp"
+                    android:text="Angle STEP 2"
+                    android:textColor="#fff"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
+
+                <SeekBar
+                    android:id="@+id/angleStep2"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginLeft="10dp"
+                    android:background="#fff"
+                    android:max="50"
+                    android:padding="12dp"
+                    android:textColor="#000"
+                    android:textSize="36sp" />
+                <TextView
+                    android:id="@+id/textAngle2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="50"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="#bbb"
+                    android:textSize="36sp"
+                    android:layout_column="2"/>
+            </TableRow>
+            <TableRow android:background="#444">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginLeft="10dp"
+                    android:text="Global Speed"
+                    android:textColor="#fff"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
+
+                <SeekBar
+                    android:id="@+id/globalSpeed"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginLeft="10dp"
+                    android:background="#fff"
+                    android:max="50"
+                    android:padding="12dp"
+                    android:textColor="#000"
+                    android:textSize="36sp" />
+                <TextView
+                    android:id="@+id/textGlobalSpeed"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="50"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="#bbb"
+                    android:textSize="36sp"
+                    android:layout_column="2"/>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/paramsRow"
+                android:background="#555">
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_marginLeft="10dp"
+                    android:text="Params"
+                    android:textColor="#fff"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/params"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_marginLeft="10dp"
+                    android:background="#fff"
+                    android:hint="params reported from the car"
+                    android:padding="5dp"
+                    android:textColor="#000"
+                    android:textSize="26sp" />
+            </TableRow>
+
+            <TableRow>
+
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#202A30"
+            android:orientation="vertical"
+            android:stretchColumns="1">
+
+            <TableRow
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:id="@+id/setConfigButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_span="1"
+                    android:checked="false"
+                    android:text="SET"
+                    />
+
+            </TableRow>
+
+        </TableLayout>
+    </LinearLayout>
+</ScrollView>
