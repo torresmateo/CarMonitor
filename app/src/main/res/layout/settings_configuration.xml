@@ -248,6 +248,15 @@
                     android:checked="false"
                     android:text="SET"
                     />
+                <Button
+                    android:id="@+id/saveConfigButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_span="1"
+                    android:checked="false"
+                    android:text="SAVE"
+                    />
 
             </TableRow>
 

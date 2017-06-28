@@ -1,5 +1,6 @@
 package uk.ac.rhul.cyclingprofessor.carmonitor;
 
+import android.app.ActionBar;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,10 +15,13 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.SharedPreferences;
 
 public class TurnConfigFragment extends Fragment {
 
     private static final String TAG = "TurnConfigFragment";
+
+    public static final String PREFS_NAME = "MyPrefsFile";
 
     // Intent request codes
     private static final int REQUEST_CONNECT_DEVICE = 1;
@@ -55,6 +59,7 @@ public class TurnConfigFragment extends Fragment {
 
 
     private Button mSetConfigButton;
+    private Button mSaveConfigButton;
 
     /**
      * Name of the connected device
@@ -83,6 +88,15 @@ public class TurnConfigFragment extends Fragment {
             Toast.makeText(activity, "Bluetooth is not available", Toast.LENGTH_LONG).show();
             activity.finish();
         }
+
+        // Restore preferences
+        SharedPreferences settings = getActivity().getSharedPreferences(PREFS_NAME, 0);
+        vSpeedStep1 = settings.getInt("speed-step1", speedMin);
+        vAngleStep1 = settings.getInt("angle-step1", angleMin);
+        vSpeedStep2 = settings.getInt("angle-step2", speedMin);;
+        vAngleStep2 = settings.getInt("angle-step2", angleMin);;
+        vGlobalSpeed = settings.getInt("speed-global", speedMin);;
+
     }
 
 
@@ -154,7 +168,15 @@ public class TurnConfigFragment extends Fragment {
         mAngleStep1.setMax((angleMax - angleMin)/angleStep);
         mAngleStep2.setMax((angleMax - angleMin)/angleStep);
 
+        //set progresses with the default values
+        mSpeedStep1.setProgress((vSpeedStep1 - speedMin)/speedStep);
+        mSpeedStep1.setProgress((vSpeedStep2 - speedMin)/speedStep);
+        mAngleStep1.setProgress((vAngleStep1 - angleMin)/angleStep);
+        mAngleStep2.setProgress((vAngleStep2 - angleMin)/angleStep);
+        mGlobalSpeed.setProgress((vGlobalSpeed - speedMin)/speedStep);
+
         mSetConfigButton = (Button) view.findViewById(R.id.setConfigButton);
+        mSaveConfigButton = (Button) view.findViewById(R.id.saveConfigButton);
     }
 
 
@@ -241,8 +263,47 @@ public class TurnConfigFragment extends Fragment {
                 String message = "(" + speed1 + ":" + angle1+":" + speed2+":" + angle2+":" + globalSpeed+ ")";
                 Log.i(TAG,"sent message: " + message);
                 senderRef.outputMessage(message);
+                setStatus(R.string.settingsFeedbackSet);
             }
         });
+        mSetConfigButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // We need an Editor object to make preference changes.
+                // All objects are from android.context.Context
+                SharedPreferences settings = getActivity().getSharedPreferences(PREFS_NAME, 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putInt("speed-step1", vSpeedStep1);
+                editor.putInt("angle-step1", vAngleStep1);
+                editor.putInt("angle-step2", vSpeedStep2);;
+                editor.putInt("angle-step2", vAngleStep2);;
+                editor.putInt("speed-global", vGlobalSpeed);;
+
+
+                // Commit the edits!
+                editor.commit();
+
+                setStatus(R.string.settingsFeedbackSave);
+            }
+        });
+
+    }
+
+    //@TODO: this was copy-pasted from CarCommsFragment, Since I can't test the app because I have an apple phone, this is probably not working
+    /**
+     * Updates the status on the action bar.
+     *
+     * @param resId a string resource ID
+     */
+    private void setStatus(int resId) {
+        FragmentActivity activity = getActivity();
+        if (null == activity) {
+            return;
+        }
+        final ActionBar actionBar = activity.getActionBar();
+        if (null == actionBar) {
+            return;
+        }
+        actionBar.setSubtitle(resId);
     }
 
     public void setSenderRef(CarCommsFragment senderRef) {

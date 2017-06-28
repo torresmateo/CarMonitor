@@ -148,10 +148,11 @@ public class CarCommsFragment extends Fragment {
         //mEcho = (TextView) view.findViewById(R.id.echoValue);
         mRFID = (TextView) view.findViewById(R.id.RFIDtext);
         mTacho = (TextView) view.findViewById(R.id.tachoValue);
-        mParams = (TextView) view.findViewById(R.id.params);
         secondFragment = new TurnConfigFragment();
         secondFragment.setSenderRef(this);
         mStartStopButton = (ToggleButton) view.findViewById(R.id.startStopButton);
+        mParams = (TextView) view.findViewById(R.id.params);
+
     }
 
     private TimerTask getStatus = new TimerTask() {
@@ -283,12 +284,14 @@ public class CarCommsFragment extends Fragment {
                         case BluetoothService.STATE_CONNECTED:
                             setStatus(getString(R.string.title_connected_to, mConnectedDeviceName));
                             //@TODO: Fix the crash after a reconnect
-                            if (statusTimer == null) {
+                            if (statusTimer != null) {
                                 statusTimer = new Timer();
                                 statusTimer.schedule(getStatus, 50, 100);
                             }
                             // create configuration panel and attach it to the sliding menu
                             //add the turn configuration panel to the fragment
+                            //@TODO: this works only because the app crashes on reconnections,
+                            //a boolean might be needed here when THAT bug is fixed
                             getFragmentManager().beginTransaction()
                                     .add(R.id.settingsConfigurator, secondFragment).commit();
                             break;

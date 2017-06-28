@@ -30,6 +30,8 @@
     <string name="RFIDHint">Last RFID TAG</string>
     <string name="controlData">Data to send to Car</string>
     <string name="title_activity_device_list">DeviceListActivity</string>
+    <string name="settingsFeedbackSet">Configuration Sent</string>
+    <string name="settingsFeedbackSave">Configuration Saved</string>
 
     <!-- Version Name -->
     <string name="version_string">Version 2.5</string>
